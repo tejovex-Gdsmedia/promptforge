@@ -61,11 +61,9 @@ export async function updateSession(request: NextRequest) {
     return response;
   }
 
-  if (
-    !user &&
-    !request.nextUrl.pathname.startsWith('/auth') &&
-    !request.nextUrl.pathname.startsWith('/_next')
-  ) {
+  // Dashboard routes are locale-prefixed, e.g. /en/dashboard/forge.
+  const isDashboardRoute = /^\/[^/]+\/dashboard(\/|$)/.test(request.nextUrl.pathname)
+  if (!user && isDashboardRoute) {
     const url = request.nextUrl.clone()
     url.pathname = '/auth/sign-in'
     return NextResponse.redirect(url)
