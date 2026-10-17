@@ -82,7 +82,7 @@ export default function HistoryPage() {
     <div className="min-h-screen bg-void text-text-primary overflow-x-hidden">
       <Toaster theme="dark" position="top-right" />
       <NoiseOverlay />
-      <div className="flex gap-8 pt-28 max-w-7xl mx-auto px-6 pb-20">
+      <div className="flex flex-col lg:flex-row gap-8 pt-28 max-w-7xl mx-auto px-6 pb-20">
         <FolderSidebar prompts={prompts} />
         <div className="flex-1">
           <div className="mb-8">

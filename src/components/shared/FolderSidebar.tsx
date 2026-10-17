@@ -41,7 +41,7 @@ export default function FolderSidebar({ prompts = [] }: { prompts?: any[] }) {
   ])).sort();
 
   return (
-    <GlassCard className="w-64 p-4 flex flex-col gap-4">
+    <GlassCard className="w-full lg:w-64 lg:shrink-0 p-4 flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <h2 className="font-serif text-lg">Folders</h2>
         <button onClick={() => setIsCreating(true)} className="p-1 hover:bg-white/10 rounded-md">
@@ -71,7 +71,7 @@ export default function FolderSidebar({ prompts = [] }: { prompts?: any[] }) {
       )}
 
       <button
-        onClick={() => { setActiveFolder(null); setActiveProfession(null); }}
+        onClick={() => setActiveFolder(null)}
         className={`text-sm w-full text-left p-2 rounded-lg transition-colors ${
           !activeFolder && !activeProfession ? "bg-white/10" : "hover:bg-white/5"
         }`}
@@ -87,11 +87,7 @@ export default function FolderSidebar({ prompts = [] }: { prompts?: any[] }) {
           return (
           <div key={profession}>
             <button
-              onClick={() => {
-                console.log("Clicked profession:", profession);
-                setActiveProfession(profession);
-                setActiveFolder(null);
-              }}
+              onClick={() => setActiveProfession(profession)}
               className={`text-xs font-medium uppercase tracking-wider mb-2 w-full text-left transition-colors flex justify-between p-1 rounded hover:bg-white/10 ${
                 activeProfession === profession ? "text-white bg-white/5" : "text-text-muted hover:text-white"
               }`}
@@ -103,7 +99,7 @@ export default function FolderSidebar({ prompts = [] }: { prompts?: any[] }) {
                 {items.map((folder: any) => (
                   <button
                     key={folder.id}
-                    onClick={() => { setActiveFolder(folder); setActiveProfession(null); }}
+                    onClick={() => setActiveFolder(folder)}
                     className={`flex items-center gap-2 p-2 rounded-lg transition-colors ${
                       activeFolder?.id === folder.id ? "bg-white/10" : "hover:bg-white/5"
                     }`}
