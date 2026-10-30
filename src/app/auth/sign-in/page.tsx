@@ -1,16 +1,23 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { supabase } from '@/lib/supabase';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { toast, Toaster } from 'sonner';
 import GlassCard from '@/components/shared/GlassCard';
 
-export default function SignInPage() {
+function SignInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get('error') === 'oauth_failed') {
+      toast.error('Google sign-in failed. Please try again.');
+    }
+  }, [searchParams]);
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,13 +31,16 @@ export default function SignInPage() {
     setLoading(false);
   };
 
-  const handleOAuthSignIn = async (provider: 'google' | 'github') => {
-    await supabase.auth.signInWithOAuth({
-        provider,
+  const handleGoogleSignIn = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
         options: {
-            redirectTo: `${window.location.origin}/auth/callback`,
+            redirectTo: `${window.location.origin}/auth/callback?next=/en/dashboard/forge`,
         },
     });
+    if (error) {
+      toast.error(error.message);
+    }
   };
 
   return (
@@ -41,16 +51,10 @@ export default function SignInPage() {
 
             <div className="flex flex-col gap-3">
                 <button
-                  onClick={() => handleOAuthSignIn('google')}
+                  onClick={handleGoogleSignIn}
                   className="w-full bg-white/5 hover:bg-white/10 text-text-primary p-3 rounded-xl border border-glass-border transition-colors font-medium text-sm"
                 >
                     Sign In with Google
-                </button>
-                <button
-                  onClick={() => handleOAuthSignIn('github')}
-                  className="w-full bg-white/5 hover:bg-white/10 text-text-primary p-3 rounded-xl border border-glass-border transition-colors font-medium text-sm"
-                >
-                    Sign In with GitHub
                 </button>
             </div>
 
@@ -89,5 +93,13 @@ export default function SignInPage() {
             </div>
         </GlassCard>
     </div>
+  );
+}
+
+export default function SignInPage() {
+  return (
+    <Suspense fallback={null}>
+      <SignInForm />
+    </Suspense>
   );
 }
