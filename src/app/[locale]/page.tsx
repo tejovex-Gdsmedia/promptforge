@@ -18,23 +18,23 @@ export default function LandingPage() {
 
       <main className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20">
         {/* Navigation */}
-        <nav className="flex items-center justify-between mb-32">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-xl bg-white text-void flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.15)]">
-              <Sparkles className="w-5 h-5" />
+        <nav className="flex items-center justify-between mb-20 md:mb-32 gap-3">
+          <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group shrink-0">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white text-void flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.15)]">
+              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            <span className="text-xl font-semibold tracking-tight">PromptForge</span>
+            <span className="text-lg sm:text-xl font-semibold tracking-tight">PromptForge</span>
           </Link>
-          <div className="flex gap-4">
-            <Link href="#features" className="text-sm text-text-secondary hover:text-white transition-colors px-4 py-2">Features</Link>
-            <Link href="#pricing" className="text-sm text-text-secondary hover:text-white transition-colors px-4 py-2">Pricing</Link>
-            <a href="/en/dashboard/forge" className="text-sm bg-white text-void px-5 py-2.5 rounded-full font-medium hover:bg-[#f0f0f0] transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)]">Get Started</a>
+          <div className="flex items-center gap-2 sm:gap-4">
+            <Link href="#features" className="hidden sm:inline-block text-sm text-text-secondary hover:text-white transition-colors px-4 py-2">Features</Link>
+            <Link href="#pricing" className="hidden sm:inline-block text-sm text-text-secondary hover:text-white transition-colors px-4 py-2">Pricing</Link>
+            <a href="/en/dashboard/forge" className="text-sm bg-white text-void px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-medium hover:bg-[#f0f0f0] transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)] whitespace-nowrap">Get Started</a>
           </div>
         </nav>
 
         {/* Hero */}
-        <section className="relative grid lg:grid-cols-2 gap-16 items-center mb-48">
-          <div className="space-y-10">
+        <section className="relative grid lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-24 md:mb-48">
+          <div className="space-y-8 lg:space-y-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -43,13 +43,13 @@ export default function LandingPage() {
               <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-glass border border-glass-border text-xs font-medium text-text-secondary tracking-wide mb-8">
                 <Zap className="w-3 h-3" /> AI-Powered Prompt Engineering
               </span>
-              <h1 className="font-serif text-6xl md:text-8xl font-medium leading-[0.9] tracking-tight mb-8">
+              <h1 className="font-serif text-4xl sm:text-5xl md:text-8xl font-medium leading-[0.95] md:leading-[0.9] tracking-tight mb-6 md:mb-8">
                 Forge prompts<br />
                 <span className="italic text-text-muted">that actually work.</span>
               </h1>
             </motion.div>
             <motion.p
-              className="text-xl text-text-secondary leading-relaxed max-w-lg"
+              className="text-base sm:text-xl text-text-secondary leading-relaxed max-w-lg"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
@@ -57,17 +57,17 @@ export default function LandingPage() {
               A cinematic workspace for professionals who refuse to settle for mediocre AI output. Transform vague ideas into structured, world-class prompts.
             </motion.p>
             <motion.div
-              className="flex gap-4 pt-4"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <a href="/en/dashboard/forge" className="inline-flex items-center gap-2.5 bg-white text-void px-8 py-4 rounded-full font-semibold text-base shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:bg-[#f0f0f0] hover:shadow-[0_0_50px_rgba(255,255,255,0.35)] transition-all duration-500 hover:-translate-y-0.5">
+              <a href="/en/dashboard/forge" className="inline-flex items-center justify-center gap-2.5 bg-white text-void px-8 py-4 rounded-full font-semibold text-base shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:bg-[#f0f0f0] hover:shadow-[0_0_50px_rgba(255,255,255,0.35)] transition-all duration-500 hover:-translate-y-0.5">
                 Start Forging <ArrowRight className="w-4 h-4" />
               </a>
               <Link
                 href="/en/dashboard/forge"
-                className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full border border-glass-border text-white hover:border-glow hover:bg-glass transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full border border-glass-border text-white hover:border-glow hover:bg-glass transition-all duration-300"
               >
                 Explore Features
               </Link>
@@ -124,10 +124,10 @@ export default function LandingPage() {
         </section>
 
         {/* Features */}
-        <section id="features" className="mb-48">
-          <div className="text-center mb-20">
-            <h2 className="font-serif text-5xl md:text-6xl mb-6">Built for precision.</h2>
-            <p className="text-text-secondary text-xl max-w-xl mx-auto">Every interaction is engineered for speed, beauty, and absolute control over your AI outputs.</p>
+        <section id="features" className="mb-24 md:mb-48">
+          <div className="text-center mb-12 md:mb-20">
+            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl mb-4 md:mb-6">Built for precision.</h2>
+            <p className="text-text-secondary text-base sm:text-xl max-w-xl mx-auto">Every interaction is engineered for speed, beauty, and absolute control over your AI outputs.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -154,8 +154,8 @@ export default function LandingPage() {
         </section>
 
         {/* How it Works */}
-        <section className="mb-48">
-          <h2 className="font-serif text-4xl md:text-5xl text-center mb-16">How it works.</h2>
+        <section className="mb-24 md:mb-48">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-center mb-10 md:mb-16">How it works.</h2>
           <div className="grid md:grid-cols-4 gap-6">
             {[
               { num: "01", title: "Select Domain", desc: "Choose from 12+ professional categories or define your own." },
@@ -173,10 +173,10 @@ export default function LandingPage() {
         </section>
 
         {/* Pricing Teaser */}
-        <section id="pricing" className="max-w-3xl mx-auto text-center mb-32">
-          <GlassCard className="p-12">
-            <h2 className="font-serif text-4xl md:text-5xl mb-6">Start Free. Scale as you grow.</h2>
-            <p className="text-text-secondary text-lg mb-8">Unlimited generations with the core engine. Pro unlocks history, favorites, multi-language, and team collaboration.</p>
+        <section id="pricing" className="max-w-3xl mx-auto text-center mb-20 md:mb-32">
+          <GlassCard className="p-6 sm:p-12">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl mb-4 md:mb-6">Start Free. Scale as you grow.</h2>
+            <p className="text-text-secondary text-base sm:text-lg mb-8">Unlimited generations with the core engine. Pro unlocks history, favorites, multi-language, and team collaboration.</p>
             <a href="/en/dashboard/forge" className="inline-block bg-white text-void px-10 py-4 rounded-full font-bold text-lg hover:bg-[#f0f0f0] shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all hover:-translate-y-1">Get Started for Free</a>
           </GlassCard>
         </section>
